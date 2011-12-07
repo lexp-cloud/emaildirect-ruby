@@ -1,5 +1,4 @@
 require 'emaildirect'
-require 'mail'
 
 module EmailDirect
   # Implements a Mailer class that can be used by Mail to send using the relay functionality
