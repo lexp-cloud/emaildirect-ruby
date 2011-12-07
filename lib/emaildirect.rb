@@ -85,7 +85,6 @@ module EmailDirect
     def self.delete(*args); handle_response super end
 
     def self.handle_response(response) # :nodoc:
-      puts response.inspect
       case response.code
       when 400
         raise BadRequest.new(Hashie::Mash.new response)
