@@ -1,0 +1,24 @@
+PATH
+  remote: .
+  specs:
+    emaildirect (1.0.0)
+      hashie
+      httparty
+      json
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    hashie (1.2.0)
+    httparty (0.8.1)
+      multi_json
+      multi_xml
+    json (1.5.3)
+    multi_json (1.0.4)
+    multi_xml (0.4.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  emaildirect!

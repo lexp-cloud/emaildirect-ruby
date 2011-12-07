@@ -1,0 +1,5 @@
+.DS_Store
+rdoc
+pkg
+*.gem
+example.rb
