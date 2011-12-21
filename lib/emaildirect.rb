@@ -27,14 +27,20 @@ require 'emaildirect/suppression_list'
 require 'emaildirect/workflow'
 
 module EmailDirect
-  # Just allows callers to do EmailDirect.api_key = "..." rather than EmailDirect::EmailDirect.api_key "..." etc
   class << self
-    def api_key=(api_key=nil)
-      EmailDirect.api_key api_key
+    # Just allows callers to do EmailDirect.api_key = "..." rather than EmailDirect::EmailDirect.api_key "..." etc
+    def api_key=(api_key)
+      EmailDirect.api_key = api_key
     end
     
     def base_uri=(uri)
       EmailDirect.base_uri uri
+    end
+
+    # Allows the initializer to turn off actually communicating to the REST service for certain environments
+    # Requires fakeweb gem to be installed
+    def disable
+      FakeWeb.register_uri(:any, %r|#{Regexp.escape(EmailDirect.base_uri)}|, :body => '{"Disabled":true}', :content_type => 'application/json; charset=utf-8')
     end
   end
 
@@ -67,39 +73,43 @@ module EmailDirect
     })
     base_uri @@base_uri
 
-    # Sets the API key which will be used to make calls to the EmailDirect API.
-    def self.api_key(api_key = nil)
-      return @@api_key unless api_key
-      @@api_key = api_key
-      headers 'ApiKey' => @@api_key
+    class << self
+      # Sets the API key which will be used to make calls to the EmailDirect API.
+      def api_key=(api_key)
+        return @@api_key unless api_key
+        @@api_key = api_key
+        headers 'ApiKey' => @@api_key
+      end
+
+      def base_uri; @@base_uri end
+
+      def get(*args); handle_response super end
+      def post(*args); handle_response super end
+      def put(*args); handle_response super end
+      def delete(*args); handle_response super end
+
+      def handle_response(response) # :nodoc:
+        case response.code
+        when 400
+          raise BadRequest.new(Hashie::Mash.new response)
+        when 401
+          raise Unauthorized.new
+        when 404
+          raise NotFound.new
+        when 400...500
+          raise ClientError.new response.parsed_response
+        when 500...600
+          raise ServerError.new
+        else
+          response
+        end
+      end
     end
 
     # This call returns an object reflecting the current permissions allowed for the provided API Key
     def ping
       response = EmailDirect.get('/Ping')
       Hashie::Mash.new(response)
-    end
-
-    def self.get(*args); handle_response super end
-    def self.post(*args); handle_response super end
-    def self.put(*args); handle_response super end
-    def self.delete(*args); handle_response super end
-
-    def self.handle_response(response) # :nodoc:
-      case response.code
-      when 400
-        raise BadRequest.new(Hashie::Mash.new response)
-      when 401
-        raise Unauthorized.new
-      when 404
-        raise NotFound.new
-      when 400...500
-        raise ClientError.new response.parsed_response
-      when 500...600
-        raise ServerError.new
-      else
-        response
-      end
     end
   end
 end

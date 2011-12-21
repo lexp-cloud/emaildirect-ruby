@@ -1,6 +1,9 @@
+## 1.2.0 (Dec. 21st, 2011)
+* Add EmailDirect.disable to disable talking to the EmailDirect server (requires fakeweb gem).
+
 ## 1.1.0 (Dec. 20th, 2011)
 
-* Added EmailDirect::Subscriber#update_custom_field and EmailDirect::Subscriber#update_custom_fields as a way to quickly update one or more custom fields.
+* Add EmailDirect::Subscriber#update_custom_field and EmailDirect::Subscriber#update_custom_fields as a way to quickly update one or more custom fields.
 * Custom Fields can now be passed as a regular ruby hash to any of the Subscriber methods and it will be converted to the correct JSON format.
 * Authentication is done using a header instead of basic auth so FakeWeb is easier to use.
 
