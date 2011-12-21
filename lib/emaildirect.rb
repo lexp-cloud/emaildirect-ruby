@@ -27,14 +27,14 @@ require 'emaildirect/suppression_list'
 require 'emaildirect/workflow'
 
 module EmailDirect
-  # Just allows callers to do EmailDirect.api_key "..." rather than EmailDirect::EmailDirect.api_key "..." etc
+  # Just allows callers to do EmailDirect.api_key = "..." rather than EmailDirect::EmailDirect.api_key "..." etc
   class << self
-    def api_key(api_key=nil)
-      r = EmailDirect.api_key api_key
+    def api_key=(api_key=nil)
+      EmailDirect.api_key api_key
     end
     
-    def base_uri(uri)
-      r = EmailDirect.base_uri uri
+    def base_uri=(uri)
+      EmailDirect.base_uri uri
     end
   end
 
@@ -62,15 +62,16 @@ module EmailDirect
     headers({ 
       'User-Agent' => "emaildirect-rest-#{VERSION}",
       'Content-Type' => 'application/json; charset=utf-8',
-      'Accept-Encoding' => 'gzip, deflate' })
+      'Accept-Encoding' => 'gzip, deflate',
+      'ApiKey' => @@api_key
+    })
     base_uri @@base_uri
-    basic_auth 'x', @@api_key
 
     # Sets the API key which will be used to make calls to the EmailDirect API.
-    def self.api_key(api_key=nil)
+    def self.api_key(api_key = nil)
       return @@api_key unless api_key
       @@api_key = api_key
-      basic_auth 'x', @@api_key
+      headers 'ApiKey' => @@api_key
     end
 
     # This call returns an object reflecting the current permissions allowed for the provided API Key

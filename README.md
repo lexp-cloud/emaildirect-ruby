@@ -7,7 +7,7 @@ A ruby library which implements the complete functionality of the REST (v5) [Ema
 ### Plain ruby
     gem install emaildirect
     require 'emaildirect'
-    EmailDirect.api_key 'your_api_key'
+    EmailDirect.api_key = 'your_api_key'
 
 ### Rails integration
 In your gemfile:
@@ -16,7 +16,7 @@ In your gemfile:
 
 In an initializer:
 
-    EmailDirect.api_key 'your_api_key'
+    EmailDirect.api_key = 'your_api_key'
 
 ## Examples
 
@@ -36,6 +36,20 @@ Results in:
     response = EmailDirect::Publication.create('Test', :Description => 'Test Publication')
     sub = EmailDirect::Publication.new(response.publicationID)
     sub.delete
+
+### Updating a subscriber's custom fields
+
+A single attribute:
+
+    EmailDirect::Subscriber.new(email).update_custom_field :FirstName, 'Pat'
+
+Multiple attributes:
+
+    EmailDirect::Subscriber.new(email).update_custom_fields :FirstName => 'Pam', :LastName => 'Sinivas'
+
+When creating a subscriber
+
+    EmailDirect::Subscriber.create(email, :Publications => [1], :CustomFields => { :FirstName => 'Pam', :LastName => 'Sinivas' }
 
 ### ActionMailer integration
 You can use send your ActionMailer email through Email Direct using their Relay Send functionality by setting up a new delivery method in an initalizer:
