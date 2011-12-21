@@ -88,7 +88,7 @@ Results in:
     Error Code:    101
     Error Message: Invalid Email Address
 
-### Disabling in Development/Test
+### Disabling for development/testing
 A helper method is provided to disable talking to the EmailDirect REST server (requires the [Fakeweb gem](http://fakeweb.rubyforge.org/))
 
     EmailDirect.disable
