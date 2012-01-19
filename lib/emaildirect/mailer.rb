@@ -45,6 +45,8 @@ module EmailDirect
       options[:Subject] = mail.subject
       options[:Text] = mail.multipart? ? mail.text_part.body.to_s : mail.body.to_s
       options[:HTML] = mail.multipart? ? mail.html_part.body.to_s : mail.body.to_s
+      # Emaildirect strips out newlines which can lead to words being smooshed together
+      options[:HTML].gsub! /[\r\n]+/, ' '
       # Set the envelope from to be either the return-path, the sender or the first from address
       envelope_from = mail.return_path || mail.sender || mail.from_addrs.first
       unless envelope_from.blank?

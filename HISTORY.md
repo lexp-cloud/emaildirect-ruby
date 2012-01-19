@@ -1,3 +1,6 @@
+## 1.2.1 (Jan. 19th, 2012)
+* Relay emails were losing spaces between words because EmailDirect strips out newlines.
+
 ## 1.2.0 (Dec. 21st, 2011)
 * Add EmailDirect.disable to disable talking to the EmailDirect server (requires fakeweb gem).
 
