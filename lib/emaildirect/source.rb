@@ -45,7 +45,7 @@ module EmailDirect
     end
 
     def add_emails(email_addresses)
-      options = { :EmailAddresses => email_addresses.to_a }
+      options = { :EmailAddresses => Array(email_addresses) }
       response = EmailDirect.post uri_for('AddEmails'), :body => options.to_json
       Hashie::Mash.new(response)
     end

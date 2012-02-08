@@ -48,25 +48,25 @@ module EmailDirect
     end
 
     def add_emails(email_addresses)
-      options = { :EmailAddresses => email_addresses.to_a }
+      options = { :EmailAddresses => Array(email_addresses) }
       response = post 'AddEmails', :body => options.to_json
       Hashie::Mash.new(response)
     end
 
     def remove_emails(email_addresses)
-      options = { :EmailAddresses => email_addresses.to_a }
+      options = { :EmailAddresses => Array(email_addresses) }
       response = post 'RemoveEmails', :body => options.to_json
       Hashie::Mash.new(response)
     end
 
     def add_domains(domain_addresses)
-      options = { :DomainNames => domain_addresses.to_a }
+      options = { :DomainNames => Array(domain_addresses) }
       response = post 'AddDomains', :body => options.to_json
       Hashie::Mash.new(response)
     end
 
     def remove_domains(domain_addresses)
-      options = { :DomainNames => domain_addresses.to_a }
+      options = { :DomainNames => Array(domain_addresses) }
       response = post 'RemoveDomains', :body => options.to_json
       Hashie::Mash.new(response)
     end

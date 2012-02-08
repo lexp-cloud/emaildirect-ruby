@@ -1,3 +1,6 @@
+## 1.3.0 (Feb. 9th, 2012)
+* Ruby 1.9 compatibility
+
 ## 1.2.1 (Jan. 19th, 2012)
 * Relay emails were losing spaces between words because EmailDirect strips out newlines.
 
