@@ -6,7 +6,7 @@ module EmailDirect
     def initialize(values = {})
       self.settings = { :category_id          => nil,
                         :options              => {},
-                        :logger               => defined?(Rails) && Rails.logger,
+                        :logger               => defined?(::Rails) && ::Rails.logger,
                         :log_level            => :debug
                       }.merge!(values)
       raise ArgumentError, 'Category ID is required' unless settings[:category_id]
@@ -20,7 +20,6 @@ module EmailDirect
 
     def deliver!(mail)
       destinations ||= mail.destinations if mail.respond_to?(:destinations) && mail.destinations
-      Mail::Message
       if destinations.blank?
         raise ArgumentError.new('At least one recipient (To, Cc or Bcc) is required to send a message')
       end
