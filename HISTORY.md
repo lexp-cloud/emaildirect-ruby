@@ -1,3 +1,6 @@
+## 1.3.1 (Apr. 5, 2012)
+* Fix bug where exceptions could be raised with empty error messages.
+
 ## 1.3.0 (Feb. 9th, 2012)
 * Ruby 1.9 compatibility
 
