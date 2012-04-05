@@ -46,10 +46,10 @@ module EmailDirect
 
   # Represents a EmailDirect API error and contains specific data about the error.
   class EmailDirectError < StandardError
-    attr_reader :data, :code
+    attr_reader :data
     def initialize(data)
-      @data = data
-      super "The EmailDirect API responded with the following error - #{@data.ErrorCode}: #{@data.Message}"
+      @data = Hashie::Mash.new(data)
+      super "The EmailDirect API responded with the following error - #{data}"
     end
   end
 
@@ -91,7 +91,7 @@ module EmailDirect
       def handle_response(response) # :nodoc:
         case response.code
         when 400
-          raise BadRequest.new(Hashie::Mash.new response)
+          raise BadRequest.new response.parsed_response
         when 401
           raise Unauthorized.new
         when 404
