@@ -6,13 +6,13 @@ module EmailDirect
   class Database
     class << self
       def all
-        response = EmailDirect.get '/Databases'
+        response = EmailDirect.get '/Database'
         Hashie::Mash.new(response)
       end
 
       def create(name, options = {})
         options.merge! :ColumnName => name
-        response = EmailDirect.post '/Databases', :body => options.to_json
+        response = EmailDirect.post '/Database', :body => options.to_json
         Hashie::Mash.new(response)
       end
     end
@@ -24,7 +24,7 @@ module EmailDirect
     end
 
     def details
-      response = EmailDirect.get "/Databases/#{column_name}"
+      response = EmailDirect.get "/Database/#{column_name}"
       Hashie::Mash.new(response)
     end
   end
