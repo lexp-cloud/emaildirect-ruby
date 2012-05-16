@@ -1,3 +1,6 @@
+## 1.3.2 (May 16, 2012)
+* Fixed url for database resource (bgetting)
+
 ## 1.3.1 (Apr. 5, 2012)
 * Fix bug where exceptions could be raised with empty error messages.
 
