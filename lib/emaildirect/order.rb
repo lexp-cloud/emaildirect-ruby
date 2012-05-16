@@ -18,7 +18,7 @@ module EmailDirect
       
       def import(orders)
         options = { :Orders => Array(orders) }
-        response = EmailDirect.post uri_for('Import'), :body => options.to_json
+        response = EmailDirect.post '/Orders/Import', :body => options.to_json
         Hashie::Mash.new(response)
       end
     end
