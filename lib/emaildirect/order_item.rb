@@ -23,7 +23,7 @@ module EmailDirect
       end
     end
 
-    attr_reader :order_number
+    attr_reader :item_id
 
     def initialize(item_id)
       @item_id = item_id
