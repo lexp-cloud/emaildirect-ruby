@@ -42,7 +42,6 @@ module EmailDirect
 
     def delete
       response = EmailDirect.delete uri_for, {}
-      Hashie::Mash.new(response)
     end
 
     private
