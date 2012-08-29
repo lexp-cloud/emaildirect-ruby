@@ -3,3 +3,4 @@ rdoc
 pkg
 *.gem
 example.rb
+.rvmrc
