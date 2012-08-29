@@ -1,3 +1,6 @@
+## 1.3.3 (Aug 29, 2012)
+* Added Order and OrderItem resources (bgetting)
+
 ## 1.3.2 (May 16, 2012)
 * Fixed url for database resource (bgetting)
 
