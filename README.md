@@ -1,5 +1,7 @@
 # Note
-EmailDirect is now [Campaigner](http://campaigner.com/). `v2.0.0` will address all these changes.
+
+EmailDirect is now [Campaigner](http://campaigner.com/).
+The API endpoint, https://edapi.campaigner.com/v1/, was created by Campaigner to handle old EmailDirect API.
 Use `v1.3.4` if you use `Hashie >= 3.0.0`.
 
 # emaildirect
@@ -37,7 +39,7 @@ Results in:
 
 ### Create, then remove a Publication
 
-    response = EmailDirect::Publication.create('Test', :Description => 'Test Publication')
+    response = EmailDirect::Publication.create('Test', Description: 'Test Publication')
     sub = EmailDirect::Publication.new(response.publicationID)
     sub.delete
 
@@ -45,15 +47,15 @@ Results in:
 
 A single attribute:
 
-    EmailDirect::Subscriber.new(email).update_custom_field :FirstName, 'Pat'
+    EmailDirect::Subscriber.new(email).update_custom_field(:FirstName, 'Pat')
 
 Multiple attributes:
 
-    EmailDirect::Subscriber.new(email).update_custom_fields :FirstName => 'Pam', :LastName => 'Sinivas'
+    EmailDirect::Subscriber.new(email).update_custom_fields(FirstName: 'Pam', LastName: 'Sinivas')
 
 When creating a subscriber
 
-    EmailDirect::Subscriber.create(email, :Publications => [1], :CustomFields => { :FirstName => 'Pam', :LastName => 'Sinivas' }
+    EmailDirect::Subscriber.create(email, Publications: [1], CustomFields: { FirstName: 'Pam', LastName: 'Sinivas' })
 
 ### ActionMailer integration
 You can use send your ActionMailer email through Email Direct using their Relay Send functionality by setting up a new delivery method in an initalizer:
