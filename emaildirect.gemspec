@@ -5,7 +5,7 @@ require File.expand_path('lib/emaildirect/version')
 
 Gem::Specification.new do |s|
   s.add_runtime_dependency('json')
-  s.add_runtime_dependency('hashie', '>= 3.0.0')
+  s.add_runtime_dependency('hashie', '< 3.0.0')
   s.add_runtime_dependency('httparty')
   s.name = "emaildirect"
   s.author = "Jason Rust"

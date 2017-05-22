@@ -2,7 +2,7 @@ require 'cgi'
 require 'uri'
 require 'httparty'
 require 'hashie'
-Hash.send :include, Hashie::Extensions
+Hash.send :include, Hashie::HashExtensions
 
 libdir = File.dirname(__FILE__)
 $LOAD_PATH.unshift(libdir) unless $LOAD_PATH.include?(libdir)
@@ -34,7 +34,7 @@ module EmailDirect
     def api_key=(api_key)
       EmailDirect.api_key = api_key
     end
-    
+
     def base_uri=(uri)
       EmailDirect.base_uri uri
     end
@@ -64,10 +64,10 @@ module EmailDirect
 
   class EmailDirect
     include HTTParty
-    
-    @@base_uri = "https://rest.emaildirect.com/v1/"
-    @@api_key = ""
-    headers({ 
+
+    @@base_uri = 'https://edapi.campaigner.com/v1/'
+    @@api_key  = ''
+    headers({
       'User-Agent' => "emaildirect-rest-#{VERSION}",
       'Content-Type' => 'application/json; charset=utf-8',
       'Accept-Encoding' => 'gzip, deflate',
