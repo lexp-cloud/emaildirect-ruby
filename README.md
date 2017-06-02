@@ -1,3 +1,7 @@
+# Note
+EmailDirect is now [Campaigner](http://campaigner.com/). `v2.0.0` will address all these changes.
+Use `v1.3.4` if you use `Hashie >= 3.0.0`.
+
 # emaildirect
 
 A ruby library which implements the complete functionality of the REST (v5) [Email Direct API](https://docs.emaildirect.com).
@@ -27,7 +31,7 @@ In an initializer:
     end
 
 Results in:
-    
+
     1: Publication One
     2: Publication Two
 

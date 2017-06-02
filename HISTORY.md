@@ -1,3 +1,6 @@
+## 1.3.4 (Jun 2, 2017)
+* Hashie >= 3.0.0
+
 ## 1.3.3 (Aug 29, 2012)
 * Added Order and OrderItem resources (bgetting)
 

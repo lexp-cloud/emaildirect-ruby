@@ -17,7 +17,7 @@ end
 
 desc "Build and release the gem"
 task :release => :build do
-  system "gem push emaildirect-#{CreateSend::VERSION}.gem"
+  system "gem push emaildirect-#{EmailDirect::VERSION}.gem"
 end
 
 task :default => :test
