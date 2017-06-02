@@ -6,7 +6,7 @@ Use `v1.3.4` if you use `Hashie >= 3.0.0`.
 
 # emaildirect
 
-A ruby library which implements the complete functionality of the REST (v5) [Email Direct API](https://docs.emaildirect.com).
+A ruby library which implements the complete functionality of the REST [Campaigner EmailDirect API](https://media.campaigner.com/apidocs/edapi/#overview).
 
 ## Installation
 
@@ -61,18 +61,18 @@ When creating a subscriber
 You can use send your ActionMailer email through Email Direct using their Relay Send functionality by setting up a new delivery method in an initalizer:
 
      ActionMailer::Base.add_delivery_method :emaildirect, EmailDirect::Mailer,
-                                            :category_id => 1,
-                                            :options   => { :Force => true }
+                                            category_id: 1,
+                                            options: { Force: true }
 
 And in your ActionMailer class:
 
-    defaults :delivery_method => :emaildirect
+    defaults delivery_method: :emaildirect
 
 or for just a particular message:
 
     def welcome(user) do
-      mail :to => user.email,
-           :delivery_method => :emaildirect
+      mail to: user.email,
+           delivery_method: :emaildirect
     end
 
 ### Handling errors
@@ -100,8 +100,7 @@ A helper method is provided to disable talking to the EmailDirect REST server (r
     EmailDirect.disable
 
 ### Expected input and output
-The best way of finding out the expected input and output of a particular method in a particular class is to read the [API docs](https://docs.emaildirect.com)
-and take a look at the code for that function.
+The best way of finding out the expected input and output of a particular method in a particular class is to read the [API docs](https://media.campaigner.com/apidocs/edapi/#overview) and take a look at the code for that function.
 
 ## Credits
 - Jason Rust
