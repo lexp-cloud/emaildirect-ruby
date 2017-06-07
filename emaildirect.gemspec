@@ -18,6 +18,7 @@ Gem::Specification.new do |s|
   s.platform = Gem::Platform::RUBY
   s.required_rubygems_version = Gem::Requirement.new('>= 1.3.6') if s.respond_to? :required_rubygems_version=
 
+  s.add_development_dependency 'rake'
   s.add_runtime_dependency 'json'
   s.add_runtime_dependency 'hashie', '<= 2.1.2'
   s.add_runtime_dependency 'httparty'

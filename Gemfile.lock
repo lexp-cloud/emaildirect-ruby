@@ -14,12 +14,14 @@ GEM
       multi_xml (>= 0.5.2)
     json (2.1.0)
     multi_xml (0.6.0)
+    rake (11.1.2)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   emaildirect!
+  rake
 
 BUNDLED WITH
    1.14.6
