@@ -1,4 +1,8 @@
-## 1.3.4 (Jun 2, 2017)
+## 2.0.0 (Jun 7, 2017)
+* Switched API endpoint to Campaigner.
+* Locked Hashie <= 2.1.2
+
+## 1.3.4 (Jun 7, 2017)
 * Hashie >= 3.0.0
 
 ## 1.3.3 (Aug 29, 2012)
@@ -26,5 +30,4 @@
 * Authentication is done using a header instead of basic auth so FakeWeb is easier to use.
 
 ## 1.0.0 (Dec. 12th, 2011)
-
 * Initial release
