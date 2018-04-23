@@ -70,7 +70,6 @@ module EmailDirect
     headers({
       'User-Agent' => "emaildirect-rest-#{VERSION}",
       'Content-Type' => 'application/json; charset=utf-8',
-      'Accept-Encoding' => 'gzip, deflate',
       'ApiKey' => @@api_key
     })
     base_uri @@base_uri
