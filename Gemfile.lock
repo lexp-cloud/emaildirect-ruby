@@ -14,7 +14,7 @@ GEM
       multi_xml (>= 0.5.2)
     json (2.1.0)
     multi_xml (0.6.0)
-    rake (11.1.2)
+    rake (13.0.1)
 
 PLATFORMS
   ruby
