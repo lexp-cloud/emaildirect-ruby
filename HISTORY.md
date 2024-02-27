@@ -1,3 +1,6 @@
+## 3.0.1 (Feb 27, 2024)
+* Updated httparty from 0.20.0 to 0.21.0
+
 ## 2.0.0 (Jun 7, 2017)
 * Switched API endpoint to Campaigner.
 * Locked Hashie <= 2.1.2
