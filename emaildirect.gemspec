@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.email = ["rustyparts@gmail.com"]
   s.executables = `git ls-files -- bin/*`.split("\n").map{|f| File.basename(f)}
   s.files = `git ls-files`.split("\n")
-  s.homepage = "http://github.com/LessonPlanet/emaildirect-ruby"
+  s.homepage = "http://github.com/lexp-cloud/emaildirect-ruby"
   s.require_paths = ["lib"]
   s.summary = %q{A library which implements the complete functionality of of the emaildirect REST API (v5).}
   s.test_files = `git ls-files -- {test,spec,features}/*`.split("\n")
